@@ -65,8 +65,10 @@ git clone https://github.com/siham-bitz/siltawi_digmarket_web.git
 cd siltawi_digmarket_web
 npm install
 npm run dev
+```
 
 🌐 Deployment
+
 Deployed on Vercel
 
 Live demo: https://siltawi-digmarket-web.vercel.app/
