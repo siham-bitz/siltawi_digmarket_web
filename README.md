@@ -59,25 +59,17 @@ src/
 ## ⚙️ Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/siham-bitz/siltawi_digmarket_web.git
 
-   ```
-
-bash
-cd siltawi-website
-Install dependencies:
-
-bash
+```bash
+git clone https://github.com/siham-bitz/siltawi_digmarket_web.git
+cd siltawi_digmarket_web
 npm install
-Run the development server:
-
-bash
 npm run dev
-🌐 Deployment
-Deployed on Vercel/Netlify
 
-Live demo: [Insert your deployed link here]
+🌐 Deployment
+Deployed on Vercel
+
+Live demo: https://siltawi-digmarket-web.vercel.app/
 
 👥 Team
 CEO & Founder
