@@ -60,8 +60,8 @@ src/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/siltawi-website.git
-   Navigate into the project folder:
+   git clone https://github.com/siham-bitz/siltawi_digmarket_web.git
+
    ```
 
 bash
