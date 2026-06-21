@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Brand Colors Extracted from Logo */
+  --color-brand-primary: #872675;
+  --color-brand-primary-light: #fef0fa;
+  --color-brand-secondary: #F05253;
+  --color-brand-secondary-light: #fff5f5;
+  --color-brand-accent: #F8D424;
+  --color-brand-dark: #1E101C;
+  --color-brand-neutral: #5c505b;
+  --color-brand-offwhite: #FAFAFA;
+}
+
+/* Custom layout utility classes */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #FFFFFF;
+  color: var(--color-brand-dark);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #872675;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a13d8f;
+}
