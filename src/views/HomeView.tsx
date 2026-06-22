@@ -150,17 +150,22 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           {whyChooseSiltawi.map((feature, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary/20 transition-all duration-300 flex flex-col text-left"
+              whileHover={{ 
+                y: -8, 
+                scale: 1.02,
+                boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:border-brand-primary/20 transition-all duration-300 flex flex-col text-left cursor-pointer group"
               id={`why-card-${idx}`}
             >
-              <div className="w-12 h-12 rounded-xl bg-brand-primary-light flex items-center justify-center text-brand-primary mb-6 shrink-0">
-                <LucideIcon name={feature.icon} size={22} />
+              <div className="w-12 h-12 rounded-xl bg-brand-primary-light flex items-center justify-center text-brand-primary mb-6 shrink-0 group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
+                <LucideIcon name={feature.icon} size={22} className="group-hover:rotate-12 transition-transform duration-300" />
               </div>
-              <h4 className="font-display font-bold text-lg text-brand-dark mb-3">
+              <h4 className="font-display font-bold text-lg text-brand-dark mb-3 group-hover:text-brand-primary transition-colors duration-300">
                 {feature.title}
               </h4>
               <p className="font-sans text-sm text-brand-neutral leading-relaxed">
@@ -197,16 +202,26 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {featuredServices.map((cat, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20, delay: idx * 0.05 }}
+                className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:border-brand-primary/20 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
                 id={`service-preview-card-${cat.id}`}
+                onClick={() => onNavigate('services')}
               >
                 <div className="text-left space-y-6">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-primary flex items-center justify-center text-white mb-6 shadow-sm">
-                    <LucideIcon name={cat.icon} size={26} />
+                  <div className="w-14 h-14 rounded-2xl bg-brand-primary-light text-brand-primary flex items-center justify-center mb-6 shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
+                    <LucideIcon name={cat.icon} size={26} className="group-hover:scale-110 transition-transform duration-300" />
                   </div>
-                  <h4 className="font-display font-black text-xl text-brand-dark">
+                  <h4 className="font-display font-black text-xl text-brand-dark group-hover:text-brand-primary transition-colors duration-300">
                     {cat.title}
                   </h4>
                   <p className="font-sans text-sm text-brand-neutral leading-relaxed">
@@ -214,7 +229,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                   </p>
                   <ul className="space-y-2.5 pt-4">
                     {cat.items.slice(0, 3).map((item, itemIdx) => (
-                      <li key={itemIdx} className="flex items-start space-x-2 text-xs font-sans text-brand-neutral">
+                      <li key={itemIdx} className="flex items-start space-x-2 text-xs font-sans text-brand-neutral group-hover:translate-x-1.5 transition-transform duration-300">
                         <Check size={14} className="text-brand-secondary shrink-0 mt-0.5" />
                         <span className="font-medium text-brand-dark">{item.name}</span>
                       </li>
@@ -222,15 +237,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                   </ul>
                 </div>
                 <div className="pt-8 text-left">
-                  <button
-                    onClick={() => onNavigate('services')}
-                    className="text-brand-primary font-sans font-semibold text-xs inline-flex items-center space-x-1.5 hover:text-brand-secondary cursor-pointer"
+                  <span
+                    className="text-brand-primary font-sans font-bold text-xs inline-flex items-center space-x-1.5 group-hover:text-brand-secondary transition-colors"
                   >
                     <span>Read Details</span>
-                    <ArrowRight size={12} />
-                  </button>
+                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -264,23 +278,33 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredProjects.map((project, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="bg-white rounded-3xl overflow-hidden border border-gray-150 shadow-sm group hover:-translate-y-1.5 transition-all duration-350 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                y: -10, 
+                scale: 1.02,
+                boxShadow: "0 25px 30px -10px rgb(0 0 0 / 0.15)"
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, delay: idx * 0.05 }}
+              className="bg-white rounded-3xl overflow-hidden border border-gray-150 shadow-sm group transition-all duration-300 flex flex-col justify-between cursor-pointer"
               id={`portfolio-preview-card-${project.id}`}
+              onClick={() => onNavigate('portfolio')}
             >
               <div className="relative aspect-[4/3] w-full bg-gray-50 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-4 left-4 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow-sm">
+                <div className="absolute top-4 left-4 bg-brand-primary text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow-sm group-hover:bg-brand-secondary transition-colors duration-300">
                   {project.category}
                 </div>
                 {project.metrics && (
-                  <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm shadow border border-gray-100 text-brand-secondary font-bold text-xs py-1.5 px-3 rounded-xl font-mono">
+                  <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm shadow border border-gray-100 text-brand-secondary font-bold text-xs py-1.5 px-3 rounded-xl font-mono group-hover:bg-brand-secondary group-hover:text-white transition-colors duration-300">
                     {project.metrics}
                   </div>
                 )}
@@ -288,7 +312,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               <div className="p-6 text-left flex-grow flex flex-col justify-between">
                 <div>
                   <div className="text-xs font-mono font-medium text-brand-neutral mb-1.5">{project.client}</div>
-                  <h4 className="font-display font-bold text-lg text-brand-dark mb-3 line-clamp-1">
+                  <h4 className="font-display font-bold text-lg text-brand-dark mb-3 line-clamp-1 group-hover:text-brand-primary transition-colors duration-300">
                     {project.title}
                   </h4>
                   <p className="font-sans text-xs text-brand-neutral leading-relaxed line-clamp-3">
@@ -297,13 +321,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-4 border-t border-gray-100 mt-4">
                   {project.tags.slice(0, 3).map((tag, tagIdx) => (
-                    <span key={tagIdx} className="bg-gray-55 text-brand-neutral px-2 py-1 rounded-md text-[10px] font-mono leading-none">
+                    <span key={tagIdx} className="bg-gray-55 text-brand-neutral px-2 py-1 rounded-md text-[10px] font-mono leading-none group-hover:bg-brand-primary-light group-hover:text-brand-primary transition-colors duration-300">
                       #{tag}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

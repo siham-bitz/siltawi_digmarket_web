@@ -30,19 +30,16 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           
           {/* Column 1: Brand & Bio */}
           <div className="space-y-6" id="footer-brand-section">
-            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => handleQuickLink('home')}>
+            <div className="flex items-center cursor-pointer" onClick={() => handleQuickLink('home')}>
               <img
                 src="https://workshop.siltawi.com/siltawi_logo_normal_eng_v2.svg"
                 alt="Siltawi Logo"
-                className="h-10 w-auto object-contain"
+                className="h-10 w-auto object-contain hover:opacity-90 transition-opacity"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/siltawi_logo.svg';
                 }}
               />
-              <span className="font-display font-bold text-xl tracking-tight text-brand-dark">
-                Siltawi<span className="text-brand-secondary">.</span>
-              </span>
             </div>
             <p className="font-sans text-sm text-brand-neutral leading-relaxed">
               {companyDetails.description}
